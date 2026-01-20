@@ -45,6 +45,7 @@ const CalendarView = React.memo(({ cardIds }) => {
           dueDate: card.dueDate,
           isDueCompleted: card.isDueCompleted,
           name: card.name,
+          isOverdue: card.dueDate && !card.isDueCompleted && parseISO(card.dueDate) < new Date(),
         };
       })
       .filter((card) => card.dueDate); // Only show cards with due dates
@@ -127,7 +128,13 @@ const CalendarView = React.memo(({ cardIds }) => {
         </div>
         <div className={styles.dayCards}>
           {dayCards.map((card) => (
-            <div key={card.id} className={styles.calendarCard}>
+            <div
+              key={card.id}
+              className={classNames(styles.calendarCard, {
+                [styles.overdue]: card.isOverdue,
+                [styles.completed]: card.isDueCompleted,
+              })}
+            >
               <Card id={card.id} isInline />
             </div>
           ))}
