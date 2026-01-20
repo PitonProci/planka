@@ -1,0 +1,178 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  overflow: auto;
+  background: var(--background-page);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.navigation {
+  flex: 1;
+}
+
+.currentPeriod {
+  flex: 2;
+  text-align: center;
+}
+
+.periodTitle {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.viewToggle {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.calendar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-card);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.weekHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: var(--background-tertiary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.weekDay {
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(120px, 1fr);
+  flex: 1;
+}
+
+.calendarGrid.weekView {
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.calendarDay {
+  border: 1px solid var(--border-primary);
+  padding: 8px;
+  overflow-y: auto;
+  background: var(--background-card);
+  transition: background-color 0.2s;
+}
+
+.calendarDay:hover {
+  background: var(--background-hover);
+}
+
+.calendarDay.otherMonth {
+  background: var(--background-tertiary);
+  opacity: 0.5;
+}
+
+.calendarDay.today {
+  background: rgba(33, 133, 208, 0.05);
+}
+
+.dayHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  min-height: 24px;
+}
+
+.dayNumber {
+  font-weight: 500;
+  font-size: 0.9em;
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.dayNumber.todayNumber {
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
+.dayCards {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calendarCard {
+  font-size: 0.85em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navigation,
+  .currentPeriod,
+  .viewToggle {
+    flex: none;
+    width: 100%;
+  }
+
+  .currentPeriod {
+    text-align: center;
+  }
+
+  .viewToggle {
+    justify-content: center;
+  }
+
+  .periodTitle {
+    font-size: 1.2em;
+  }
+
+  .calendarGrid {
+    grid-auto-rows: minmax(80px, 1fr);
+  }
+
+  .weekDay {
+    font-size: 0.75em;
+    padding: 8px 4px;
+  }
+
+  .dayNumber {
+    font-size: 0.8em;
+    padding: 2px 6px;
+  }
+}

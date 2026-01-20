@@ -49,6 +49,7 @@ export const BoardViewIcons = {
   [BoardViews.KANBAN]: 'columns',
   [BoardViews.GRID]: 'th',
   [BoardViews.LIST]: 'unordered list',
+  [BoardViews.CALENDAR]: 'calendar outline',
 };
 
 export const BoardContextIcons = {
